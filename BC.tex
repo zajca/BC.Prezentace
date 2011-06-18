@@ -13,21 +13,24 @@
 
 % balíček umožňující odkazy v prezentaci
 \usepackage{hyperref}
-
+\usepackage{verbatim}
 % použité téma prezentace
 \usetheme{Berkeley}
 
 % nastavení hlavičky v prezentaci
 \title{Tvorba distribuce OS Linux}
 \subtitle{Building Linux distribution}
-\author{Martin Zajíc}
+\author{\textbf{Martin Zajíc}}
 \date{\today}
 
 %%%%%%%%%%%% vlastní prezentace %%%%%%%%%%%%
 \begin{document}
 
 % 1. snímek obsahující titulní stránku
-\frame{\titlepage}
+\frame{\titlepage
+\noindent\scriptsize Vedoucí práce: Sysel Martin, doc. Ing. Ph.D. \\
+Oponent práce: Dulík Tomáš, Ing.
+}
 
 % 2. snímek s obsahem prezentace
 %\section[Obsah]{}
@@ -82,22 +85,55 @@
 
 % 5. snímek
 \section{Praktická část}
+\subsection{LFS by bash scripts}
 \frame{
-  \frametitle{Ukázka rozložení s obrázkem}
-
+  \frametitle{LFS by bash scripts}
+  \begin{itemize}
+    \item Rozčlenění podle knihy LFS
+    \item Až na několik přerušení plně automatické sestavení
+    \item Snaha o~maximálně jednoduché a~srozumitelné scripty
+    \item Možnost krokovaní téměř každého příkazu
+    \item Možnost nainstalování grafického serveru
+  \end{itemize}
 %  \hyperlink{zacatek<5>}{\beamergotobutton{Návrat na úvod}}
 }
-\frame{
-  \frametitle{Ukázka rozložení s obrázkem}
+\subsection{onlyunpackscript}
+\begin{frame}[fragile]
+  \frametitle{onlyunpackscript}
+\begin{itemize}
+ \item Cesta mezi automatickým sestavení a~plně ručním
+ \item Odstraňuje opakující se část stahování a~rozbalování
+ \item Každý balíček v~samostatné proceduře, kterou volá postupně cyklus
+ \item Možnost obnovení při přerušení
+\end{itemize}
 
+\scriptsize\begin{verbatim}
+  while [ $BP -le 85 ]
+  do
+    package_$BP
+    unpackPackage
+    waitUser
+    save_break_point
+    BP=`expr $BP + 1`
+  done
+\end{verbatim} 
 %  \hyperlink{zacatek<5>}{\beamergotobutton{Návrat na úvod}}
-}
+
+\end{frame}
 
 % 6. snímek
 \section{Závěr}
 \frame{
   \frametitle{Závěr}
-
+\begin{itemize}
+ \item Všechny body zadání se podařilo splnit.
+ \item Praktické využití
+\begin{itemize}
+ \item Zjednodušení práce pro studenty a~ostatní zájemce
+ \item Zlepšení znalostí OS Linux a~jazyka bash
+\end{itemize}
+ \item Celkový počet řádků kódu: 12107
+\end{itemize}
 }
 
 % 7. snímek
