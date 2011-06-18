@@ -1,0 +1,130 @@
+% třída dokumentu je beamer
+\documentclass{beamer}
+
+% standardní balíčky pro češtinu a kódování UTF-8
+\usepackage{ucs,czech}
+\usepackage[utf8x]{inputenc}
+
+% balíček pro použití tučného písma v prezentaci
+\usepackage{beamerthemesplit}
+
+% balíček umožňující vkládání obrázků .jpg
+\usepackage{graphicx}
+
+% balíček umožňující odkazy v prezentaci
+\usepackage{hyperref}
+
+% použité téma prezentace
+\usetheme{Berkeley}
+
+% nastavení hlavičky v prezentaci
+\title{Tvorba distribuce OS Linux}
+\subtitle{Building Linux distribution}
+\author{Martin Zajíc}
+\date{\today}
+
+%%%%%%%%%%%% vlastní prezentace %%%%%%%%%%%%
+\begin{document}
+
+% 1. snímek obsahující titulní stránku
+\frame{\titlepage}
+
+% 2. snímek s obsahem prezentace
+%\section[Obsah]{}
+%\frame{
+%  % titulek snímku 
+%  \frametitle{Obsah prezentace}
+%  % vysázení obsahu
+%  \tableofcontents
+%}
+
+% 3. snímek 
+\section{Bakalářská práce}
+% podtitul snímku
+\subsection{Zadání}
+% snímek má své interní jméno 'zacatek'
+\frame[label=zacatek]
+{
+  \frametitle{Bakalářská práce}
+  \framesubtitle{Oficiální zadání bakalářské práce}
+
+  % nečíslovaný seznam	
+  \begin{itemize}
+    \item Sestavte distribuci OS Linux, použijte návod Linux From Scratch.
+    \item Napište scripty ve scriptovacím jazyce BASH určené pro automatické sestavení Linux From Scratch.
+    \item Zdokumentuje postup sestavení Linux From Scratch pomocí BASH scriptů zopakovatelný pro studenty bakalářského studia.
+    \item Popište základní odlišnosti Linuxových distribucí a možnosti tvorby Linuxové distribuce.
+    \item Věnujte kapitolu problematice zabezpečení linuxového operačního systému.
+    \item Vypracujte postup pro kompilaci zdrojových kódů.
+    \item Popište základní problematiku tvorby Live CD.
+  \end{itemize}
+}
+
+% 4. snímek
+\section{Úvod do problematiky}
+\frame{
+  \frametitle{(Ne)možnosti Beameru}
+  \setbeamercovered{transparent}
+        
+  Jsou zde omezení týkající se použitého výstupního formátu:
+  % nečíslovaný seznam se zvýrazněním a automatickým zobrazením
+  \begin{itemize}[<+- | alert@+>]
+    \item výstupem je PDF dokument
+    \item potřeba \uv{kvalitního} prohlížeče dokumentu
+    \item animace pomocí plynulého přesunu mezi snímky
+  \end{itemize}
+
+  Na druhou stranu je možné přidávat
+  \begin{itemize}[<+- | alert@+>]
+    \item zvuky
+    \item videa
+    \item obrázky
+    \item ...
+  \end{itemize}
+}
+
+% 5. snímek
+\section{Ukázka rozložení s obrázkem}
+\frame{
+  \frametitle{Ukázka rozložení s obrázkem}
+  % vytvoření dvou sloupců	
+%  \begin{columns}
+%    \column{5cm}
+%      Ahoj,\\ještě mě neznáte.\\[1em]Jsem Bond,\\James Bond
+%      \pause
+%    \column{5cm}
+%      \includegraphics[height=5cm]{LuFa.jpg}
+%  \end{columns}
+
+  % odkaz na začátek pomocí tlačítka
+  \hyperlink{zacatek<5>}{\beamergotobutton{Návrat na úvod}}
+}
+
+% 6. snímek
+\section{Závěr}
+\frame{
+  \frametitle{Závěr}
+
+  \textbf{Výhody řešení}\pause
+  \begin{itemize}[<+->]
+    \item jednoduchost (*) 
+    \item výborná dokumentace
+    \item výstupní formát
+  \end{itemize}
+
+  % vertikální mezera 1 em
+  \vspace{1em}
+
+  \visible<5->{
+    \textbf{Nevýhody řešen}í\pause
+    \begin{itemize}[<+->]
+      \item složitost (*)
+    \end{itemize}
+  }
+
+  \vspace{1em}
+
+  \pause[2](*) \uv{Jak pro koho}
+}
+
+\end{document}
